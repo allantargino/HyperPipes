@@ -13,8 +13,7 @@ class HyperPipe:
         return min_max_dimensions
 
     def Classify(self, point):
-        true_dimensions = 0
         for i in range(self.n_dimensions):
-            if(point[i] >= self.min_max_dimensions[i][0] and point[i] <= self.min_max_dimensions[i][1]):
-                true_dimensions += 1
-        return True if true_dimensions == self.n_dimensions else False
+            if(point[i] < self.min_max_dimensions[i][0] or point[i] > self.min_max_dimensions[i][1]):
+                return False
+        return True

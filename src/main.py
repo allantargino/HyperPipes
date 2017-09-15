@@ -9,6 +9,10 @@ points = [
     [  # class_2
         [2.5, 2.3, 2.0, 2.6, 1.7],
         [2.5, 2.0, 3.0, 2.5, 3.3]
+    ],
+    [  # class_3
+        [1.5, 1.3, 1.6],
+        [2.0, 2.0, 1.6]
     ]
 ]
 
@@ -17,7 +21,7 @@ point = [2.1, 2.3]
 for i in range(len(points)):
     class_i = points[i]
     hyperPipe = HyperPipe(class_i)
-    print('Class ' + str(i) + ': ' + str(hyperPipe.Classify(point)))
+    print('Class ' + str(i+1) + ': ' + str(hyperPipe.Classify(point)))
 
 hp_plt = HyperPipesPlot(points)
 hp_plt.add_plot_point(point)
