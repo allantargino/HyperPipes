@@ -1,12 +1,16 @@
+import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.patches import Rectangle
 
 
-class HyperPipesPlot:
+class HyperPipes2DPlot:
 
-    def __init__(self, points):
-        self.classes_len = len(points)
-        self.points = points
+    def __init__(self, data_x, data_y):
+        self.y_unique_values, self.y_unique_indices = np.unique(
+            data_y, return_inverse=True)
+        self.n_y_unique = self.y_unique_values.shape[0]
+        self.points = data_x
+        self.target = data_y
         self.colors = ['b', 'g', 'c', 'm', 'k', 'y']
         self.figure = plt.figure()
 
@@ -18,9 +22,13 @@ class HyperPipesPlot:
     def plot(self):
         currentAxis = plt.gca()
 
-        for i in range(self.classes_len):
-            x = self.points[i][0]
-            y = self.points[i][1]
+        for i in range(self.n_y_unique):
+            target_class = self.y_unique_values[i]
+            target_class_indices = np.where(self.target == target_class)
+            points_filtered = self.points[target_class_indices]
+
+            x = points_filtered[:, 0]
+            y = points_filtered[:, 1]
             rect = self.__getVisualHyperPipe__(x, y, self.colors[i])
             currentAxis.add_patch(rect)
             class_plot, = plt.plot(

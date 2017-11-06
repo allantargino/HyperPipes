@@ -1,5 +1,6 @@
 from numpy import genfromtxt, array
 from hyperPipes import HyperPipes
+from plot import HyperPipes2DPlot
 
 file_name = '..\\..\\datasets\\simple_separated.csv'
 
@@ -17,6 +18,6 @@ prediction =  classifier.predict(test_instance_x)
 
 print prediction
 
-# hp_plt = HyperPipesPlot(points)
-# hp_plt.add_plot_point(point)
-# hp_plt.plot()
+hp_plt = HyperPipes2DPlot(data_x, data_y)
+hp_plt.add_plot_point(test_instance_x)
+hp_plt.plot()
