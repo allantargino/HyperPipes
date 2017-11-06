@@ -13,7 +13,9 @@ test_instance_y = array([2.0])
 
 classifier = HyperPipes()
 classifier.fit(data_x, data_y)
-print classifier.predict(test_instance_x)
+prediction =  classifier.predict(test_instance_x)
+
+print prediction
 
 # hp_plt = HyperPipesPlot(points)
 # hp_plt.add_plot_point(point)
